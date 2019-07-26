@@ -16,7 +16,7 @@ namespace DavidApp
         {
             InitializeComponent();
 
-            MessageBox.Show("Hello Anna !");
+            MessageBox.Show("Hello David!");
         }
     }
 }
