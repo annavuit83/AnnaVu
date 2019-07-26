@@ -8,7 +8,7 @@ namespace SampleGitApp
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello Anna");
-            Console.WriteLine("Hello David");
+            Console.WriteLine("Hello David"); 
         }
     }
 }
