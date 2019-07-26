@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DavidApp.Properties
+namespace AnnaApp.Properties
 {
 
 
