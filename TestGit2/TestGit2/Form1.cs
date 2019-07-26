@@ -16,7 +16,7 @@ namespace TestGit2
         {
             InitializeComponent();
 
-            MessageBox.Show("Hello Australia!!");
+            MessageBox.Show("Hello Adelaide!!");
         }
     }
 }
