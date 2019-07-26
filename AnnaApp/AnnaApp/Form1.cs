@@ -15,7 +15,7 @@ namespace AnnaApp
         public Form1()
         {
             InitializeComponent();
-            MessageBox.Show("Hello David!");
+            MessageBox.Show("Hello Anna!");
         }
     }
 }
