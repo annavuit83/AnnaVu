@@ -10,6 +10,8 @@ namespace SampleGitApp
             Console.WriteLine("Hello Anna");
             Console.WriteLine("Hello David");
             Console.WriteLine("Hello my family");
+            Console.WriteLine("Hello Kevin");
+            Console.WriteLine("Hello Tiep");
         }
     }
 }
