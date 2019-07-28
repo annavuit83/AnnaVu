@@ -17,6 +17,7 @@ namespace TestApp2
             InitializeComponent();
 
             MessageBox.Show("Hello Lan Huong + David");
+            MessageBox.Show("Hello Kevin");
         }
     }
 }
