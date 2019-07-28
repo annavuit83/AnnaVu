@@ -15,7 +15,8 @@ namespace TestApp3
         public Form1()
         {
             InitializeComponent();
-            MessageBox.Show("This is a sentence!!!!!");
+            MessageBox.Show("This is a sentence!!!");
+            MessageBox.Show("This is a Anna.");
         }
     }
 }
