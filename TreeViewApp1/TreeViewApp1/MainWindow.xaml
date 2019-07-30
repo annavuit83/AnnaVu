@@ -8,24 +8,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition Width="800" />
         </Grid.ColumnDefinitions>
-        <TreeView Name="authorTree">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Author}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding AuthorName}" Margin="0,0,4,0" />
-                    </StackPanel>
+        <TreeView Name="authorTree" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding originalAuthorList}">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:Author}" ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Path= AuthorName}" />
                 </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="TreeViewItem">
-                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
-                </Style>
-            </TreeView.ItemContainerStyle>
-
+                <DataTemplate DataType="{x:Type local:Book}" >
+                    <TextBlock Text="{Binding Path= BookTitle}" />
+                </DataTemplate>
+            </TreeView.Resources>
         </TreeView>
         <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="23.6,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="23.6,143,0,0" VerticalAlignment="Top"/>

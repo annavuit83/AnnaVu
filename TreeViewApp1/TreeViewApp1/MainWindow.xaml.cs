@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,12 @@ namespace TreeViewApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Book> bookList;
+        public List<Book> originalBookList;
         public List<Author> originalAuthorList;
         public MainWindow()
         {
             InitializeComponent();
-            bookList = new List<Book>();
+            originalBookList = new List<Book>();
             originalAuthorList = new List<Author>();
 
             System.IO.StreamReader file = new System.IO.StreamReader(@"authors.txt");
@@ -45,7 +46,51 @@ namespace TreeViewApp1
 
             originalAuthorList = authors;
 
+            System.IO.StreamReader fileBook = new System.IO.StreamReader(@"Books.txt");
+            string lineBook = "";
+
+            List<Book> bookList = new List<Book>();
+            while ((lineBook = fileBook.ReadLine()) != null)
+            {
+                string[] textLine = lineBook.Split(',');
+                Book book = new Book();
+                book.BookID = textLine[0];
+                book.AuthorID = textLine[1];
+                book.BookTitle = textLine[2];
+                book.BookISBN = textLine[3];
+
+                bookList.Add(book);
+
+            }
+
+            for (int i = 0; i < authors.Count; i++)
+            {
+                List<Book> booksByAuthorList = getListBookByAuthorID(bookList, authors[i].AuthorID);
+                authors[i].BookList = booksByAuthorList;
+
+            }
+
+             originalBookList = bookList;
+
             authorTree.ItemsSource = originalAuthorList;
+        }
+
+        
+
+        private List<Book> getListBookByAuthorID(List<Book> originalList, string authorID)
+        {
+            List<Book> returnBooks = new List<Book>();
+
+            for (int i = 0; i < originalList.Count; i++)
+            {
+                if (originalList[i].AuthorID == authorID)
+                {
+                    returnBooks.Add(originalList[i]);
+                }
+            }
+
+            return returnBooks;
+
         }
 
 
@@ -67,6 +112,7 @@ namespace TreeViewApp1
     public class Book
     {
         public string BookID { get; set; }
+        public string AuthorID { get; set; }
         public string BookTitle { get; set; }
         public string BookISBN { get; set; }
 
@@ -76,6 +122,19 @@ namespace TreeViewApp1
     {
         public string AuthorID { get; set; }
         public string AuthorName { get; set; }
+
+        public List<Book> BookList { get; set; }
+
+        public IList Children
+        {
+            get
+            {
+                return new CompositeCollection()
+            {
+                new CollectionContainer() { Collection = BookList }
+            };
+            }
+        }
 
     }
 }
