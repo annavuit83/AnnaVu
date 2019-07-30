@@ -11,7 +11,7 @@
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="800" />
         </Grid.ColumnDefinitions>
-        <TreeView Name="authorTree" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding originalAuthorList}">
+        <TreeView Name="authorTree" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding originalAuthorList}" SelectedItemChanged="AuthorTree_SelectedItemChanged">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type local:Author}" ItemsSource="{Binding Children}">
                     <TextBlock Text="{Binding Path= AuthorName}" />
@@ -24,8 +24,8 @@
         <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="23.6,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="23.6,143,0,0" VerticalAlignment="Top"/>
         <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="23.6,199,0,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="100.6,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="100.6,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
+        <TextBox Name ="authorTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="100.6,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
+        <TextBox Name ="bookTitleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="100.6,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="100.6,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="100.6,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262"/>
         <Button Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="407.6,40,0,0" VerticalAlignment="Top" Width="75"/>

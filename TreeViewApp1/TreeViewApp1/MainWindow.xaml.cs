@@ -105,6 +105,41 @@ namespace TreeViewApp1
                 originalAuthorList = value;
             }
         }
+
+        private void AuthorTree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if ((((TreeView)sender).SelectedItem).GetType().ToString() == "TreeViewApp1.Author")
+            {
+                authorTextBox.Text = "";
+                bookTitleTextBox.Text = "";
+            }
+
+            if ((((TreeView)sender).SelectedItem).GetType().ToString() == "TreeViewApp1.Book")
+            {
+                bookTitleTextBox.Text = ((Book)((TreeView)sender).SelectedItem).BookTitle.ToString();
+            }
+
+        }
+
+        public ItemsControl GetSelectedTreeViewItemParent(TreeViewItem item)
+
+        {
+
+            DependencyObject parent = VisualTreeHelper.GetParent(item);
+
+            while (!(parent is TreeViewItem || parent is TreeView))
+
+            {
+
+                parent = VisualTreeHelper.GetParent(parent);
+
+            }
+
+
+
+            return parent as ItemsControl;
+
+        }
     }
 
 
