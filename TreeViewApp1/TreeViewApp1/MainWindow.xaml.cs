@@ -47,9 +47,10 @@ namespace TreeViewApp1
             originalAuthorList = authors;
 
             System.IO.StreamReader fileBook = new System.IO.StreamReader(@"Books.txt");
-            string lineBook = "";
-
+           
+//retrieve book list
             List<Book> bookList = new List<Book>();
+             string lineBook = "";
             while ((lineBook = fileBook.ReadLine()) != null)
             {
                 string[] textLine = lineBook.Split(',');
@@ -60,7 +61,6 @@ namespace TreeViewApp1
                 book.BookISBN = textLine[3];
 
                 bookList.Add(book);
-
             }
 
             for (int i = 0; i < authors.Count; i++)
