@@ -73,6 +73,8 @@ namespace TreeViewApp1
              originalBookList = bookList;
 
             authorTree.ItemsSource = originalAuthorList;
+
+            //Add Feature 1
         }
 
         
@@ -133,9 +135,7 @@ namespace TreeViewApp1
 
                 parent = VisualTreeHelper.GetParent(parent);
 
-            }
-
-
+            }   
 
             return parent as ItemsControl;
 
